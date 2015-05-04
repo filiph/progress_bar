@@ -1,0 +1,32 @@
+/* Copyright (c) 2015, <your name>. All rights reserved. Use of this source code */
+/* is governed by a BSD-style license that can be found in the LICENSE file. */
+
+body {
+    font-family: RobotoDraft, sans-serif;
+    color: #333;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+
+    height: 100vh;
+
+    background: #eee;
+    background-position: center center;
+    background-size: cover;
+}
+
+#matrioska {
+  max-width: 16em;
+  margin: 4em auto;
+  padding: 2em 4em 4em 4em;
+  background: white;
+  opacity: 0.9;
+}
+
+.signature {
+  margin-top: 2rem;
+  font-size: 70%;
+}
+
+.signature a {
+  text-decoration: none;
+}
