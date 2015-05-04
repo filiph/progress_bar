@@ -1,0 +1,4 @@
+*.pyc
+*_src/*
+.idea/*
+settings.cfg
