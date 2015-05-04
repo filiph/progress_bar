@@ -67,3 +67,5 @@ class TestProgress(TestCase):
                          "▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░")
         self.assertEqual(create_progress_string(1.0),
                          "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")
+        self.assertEqual(create_progress_string(1.0, width=15),
+                         "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")
