@@ -9,6 +9,10 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /robots\.txt
+  static_files: robots.txt
+  upload: /robots\.txt
+
 - url: /admin/.*
   login: admin
   script: main.app
