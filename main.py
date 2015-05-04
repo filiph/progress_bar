@@ -60,7 +60,7 @@ class TweetHandler(webapp2.RequestHandler):
     def get(self):
         progress_ratio = progress.compute_current_year_progress()
 
-        ratio_int = int(round(progress_ratio * 100))
+        ratio_int = int(progress_ratio * 100)
         save = LastPercentageModel.get_or_insert(SINGLE_KEY_NAME)
         if save.percentage != ratio_int:
             status = "{} │ {}%".format(
