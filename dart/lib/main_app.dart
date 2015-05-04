@@ -98,7 +98,7 @@ class MainApp extends PolymerElement {
   ready() {
     super.ready();
     recalculate();
-    window.onResize.listen((_) => _updateBackgroundImage());
+    // window.onResize.listen((_) => _updateBackgroundImage());
     _updateBackgroundImage();
   }
 

@@ -7,9 +7,7 @@ body {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
 
-    height: 100vh;
-
-    background: #eee;
+    background: #eee no-repeat;
     background-position: center center;
     background-size: cover;
 }
