@@ -2,3 +2,4 @@
 *_src/*
 .idea/*
 settings.cfg
+static_dart_build/*

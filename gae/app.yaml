@@ -17,8 +17,16 @@ handlers:
   login: admin
   script: main.app
 
-- url: .*
-  script: main.app
+- url: /
+  static_files: static_dart_build/web/index.html
+  upload: static_dart_build/web/index\.html
+
+- url: /(.*)$
+  static_files: static_dart_build/web/\1
+  upload: static_dart_build/web/.*$
+
+- url: /.*
+  static_dir: static_dart_build/web
 
 libraries:
 - name: webapp2
