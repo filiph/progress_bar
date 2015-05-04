@@ -1,2 +1,4 @@
 build/*
 packages/*
+.buildlog
+.pub/*
