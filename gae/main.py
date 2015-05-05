@@ -41,7 +41,7 @@ class TweetHandler(webapp2.RequestHandler):
         ratio_int = int(progress_ratio * 100)
         save = LastPercentageModel.get_or_insert(SINGLE_KEY_NAME)
         if save.percentage != ratio_int:
-            status = "{} │ {}%".format(
+            status = "{} {}%".format(
                 progress.create_progress_string(progress_ratio, width=15),
                 ratio_int
             )
