@@ -7,6 +7,8 @@ dependencies:
   browser: any
   paper_elements: '>=0.7.1 <0.8.0'
   polymer: '>=0.16.0 <0.17.0'
+  simple_preprocessor: ">=0.0.2 <0.1.0"
 transformers:
+- simple_preprocessor
 - polymer:
     entry_points: web/index.html
