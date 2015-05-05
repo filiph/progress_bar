@@ -11,7 +11,7 @@ body {
     background-position: center center;
     background-size: cover;
 
-    transition: background 1s;
+    transition: background-color 0.5s;
 }
 
 #matrioska {
