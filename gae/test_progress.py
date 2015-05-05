@@ -2,12 +2,10 @@
 # coding=utf-8
 
 from unittest import TestCase
-
-__author__ = 'filiph'
-
 from datetime import datetime
 from progress import compute_progress, compute_current_year_progress, \
     create_progress_string, UTC
+
 
 class TestProgress(TestCase):
 

@@ -1,20 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-#
-# Copyright 2007 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+
 import webapp2
 import progress
 import ConfigParser
@@ -22,6 +8,7 @@ import tweepy
 
 from google.appengine.ext import ndb
 import logging
+
 
 class LastPercentageModel(ndb.Model):
     percentage = ndb.IntegerProperty(indexed=False, default=0)
@@ -47,15 +34,6 @@ def tweet(message):
     return result
 
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        progress_ratio = progress.compute_current_year_progress()
-
-        self.response.write("{} │ {:.8%}".format(
-            progress.create_progress_string(progress_ratio),
-            progress_ratio))
-
-
 class TweetHandler(webapp2.RequestHandler):
     def get(self):
         progress_ratio = progress.compute_current_year_progress()
@@ -79,6 +57,15 @@ class TweetHandler(webapp2.RequestHandler):
         else:
             logging.info("Old percentage hasn't changed: {}".format(ratio_int))
 
+
+# XXX: Currently unused
+class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        progress_ratio = progress.compute_current_year_progress()
+
+        self.response.write("{} │ {:.8%}".format(
+            progress.create_progress_string(progress_ratio),
+            progress_ratio))
 
 
 app = webapp2.WSGIApplication([
