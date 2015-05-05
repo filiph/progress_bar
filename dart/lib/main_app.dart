@@ -110,6 +110,7 @@ class MainApp extends PolymerElement {
     else if (innerHeight >= 1005) suffix = "@0.5x";
     else if (innerHeight >= 603) suffix = "@0.3x";
     else suffix = "@0.2x";
+    document.body.style.backgroundColor = "black";
     document.body.style.backgroundImage =
         "url(images/Balaton_Hungary_Landscape$suffix.jpg)";
   }
