@@ -97,6 +97,7 @@ class MainApp extends PolymerElement {
   /// property observers set up, event listeners attached).
   ready() {
     super.ready();
+    window.onFocus.listen((_) => recalculate());
     recalculate();
     // window.onResize.listen((_) => _updateBackgroundImage());
     _updateBackgroundImage();
