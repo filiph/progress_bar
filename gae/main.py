@@ -41,21 +41,28 @@ class TweetHandler(webapp2.RequestHandler):
         ratio_int = int(progress_ratio * 100)
         save = LastPercentageModel.get_or_insert(SINGLE_KEY_NAME)
         if save.percentage != ratio_int:
-            status = "{} {}%".format(
-                progress.create_progress_string(progress_ratio, width=15),
-                ratio_int
-            )
-            logging.info("Tweeting: {}".format(status))
-            try:
-                result = tweet(status)
-                logging.info("Tweeted!\n{}".format(result))
-                save.percentage = ratio_int
-                save.put()
-                logging.info("New percentage put: {}".format(ratio_int))
-            except Exception as e:
-                logging.error(e)
+            if ratio_int == 0:
+                # New Year's Eve: tweet 100% first
+                self._tweet_percentage(1.0, 100, save)
+            self._tweet_percentage(progress_ratio, ratio_int, save)
         else:
             logging.info("Old percentage hasn't changed: {}".format(ratio_int))
+
+    @staticmethod
+    def _tweet_percentage(progress_ratio, ratio_int, save):
+        status = "{} {}%".format(
+            progress.create_progress_string(progress_ratio, width=15),
+            ratio_int
+        )
+        logging.info("Tweeting: {}".format(status))
+        try:
+            result = tweet(status)
+            logging.info("Tweeted!\n{}".format(result))
+            save.percentage = ratio_int
+            save.put()
+            logging.info("New percentage put: {}".format(ratio_int))
+        except Exception as e:
+            logging.error(e)
 
 
 # XXX: Currently unused
