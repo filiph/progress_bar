@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.title {
+  font-weight: bolder;
+}
+
+.number {
+  float: right;
+  font-size: 90%;
+  cursor: help;
+}
+
+material-progress {
+  clear: both;
+}

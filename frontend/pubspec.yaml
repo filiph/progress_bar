@@ -1,0 +1,34 @@
+name: frontend
+description: A web app that uses AngularDart Components
+version: 0.0.1
+#homepage: https://www.example.com
+#author: Filip Hracek <email@example.com>
+
+environment:
+  sdk: '>=1.24.0 <2.0.0'
+
+dependencies:
+  angular: ^4.0.0
+  angular_components: ^0.8.0
+
+dev_dependencies:
+  angular_test: ^1.0.0
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+  sass_builder: ^1.1.2
+  test: ^0.12.0
+
+transformers:
+- sass_builder
+- angular:
+    entry_points:
+      - web/main.dart
+      - test/**_test.dart
+- test/pub_serve:
+    $include: test/**_test.dart
+- dart_to_js_script_rewriter
+
+# Make pub serve use dartdevc (webdev.dartlang.org/tools/dartdevc).
+web:
+  compiler:
+    debug: dartdevc

@@ -1,0 +1,6 @@
+<span title="{{ value }} %" class="number">{{ value.floor() }}&nbsp;%</span>
+
+<span class="title">{{ title }}</span>
+
+<material-progress [max]="10000"
+                   [activeProgress]="(value * 100).round()"></material-progress>
