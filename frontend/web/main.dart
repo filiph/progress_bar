@@ -1,11 +1,11 @@
 import 'dart:html';
-import 'package:angular/angular.dart';
 
-import 'package:frontend/app_component.dart';
+import 'package:angular/angular.dart';
+import 'package:frontend/app_component.template.dart' as ng;
 
 void main() {
   _updateBackgroundImage();
-  bootstrap(AppComponent);
+  runApp(ng.AppComponentNgFactory);
   window.onResize.listen((_) => _updateBackgroundImage());
 }
 

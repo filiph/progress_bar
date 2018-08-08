@@ -16,15 +16,15 @@ handlers:
   script: main.app
 
 - url: /
-  static_files: static_dart_build/web/index.html
-  upload: static_dart_build/web/index\.html
+  static_files: static_dart_build/index.html
+  upload: static_dart_build/index\.html
 
 - url: /(.*)$
-  static_files: static_dart_build/web/\1
-  upload: static_dart_build/web/.*$
+  static_files: static_dart_build/\1
+  upload: static_dart_build/.*$
 
 - url: /.*
-  static_dir: static_dart_build/web
+  static_dir: static_dart_build
 
 libraries:
 - name: webapp2
