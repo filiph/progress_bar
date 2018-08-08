@@ -1,0 +1,13 @@
+# Optional flags (think GCC's -o3) to further optimize Dart2JS output.
+targets:
+  $default:
+    builders:
+      build_web_compilers|entrypoint:
+        options:
+          dart2js_args:
+          - --dump-info
+          - --fast-startup
+          - --minify
+          - --omit-implicit-checks
+          - --trust-primitives
+          - --no-source-maps
