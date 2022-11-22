@@ -2,3 +2,6 @@ cron:
 - description: hourly tweet availability check
   url: /admin/tweet
   schedule: every 1 hours synchronized
+- description: hourly toot availability check
+  url: /admin/toot
+  schedule: every 1 hours synchronized
