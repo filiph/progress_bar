@@ -4,4 +4,3 @@
 settings.cfg
 pytooter_clientcred.secret
 pytooter_usercred.secret
-static_dart_build/*
