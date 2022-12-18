@@ -11,3 +11,12 @@ pub run build_runner build --release -o web:../gae/static_dart_build
 ## Backend instructions
 
 We are still on Python 2.7, and we are using old versions of Mastodon, pytz, dateutil, and decorator downloaded from https://pypi.org/.
+
+
+### Deployment
+
+Go to `gae/` and run
+
+```sh
+gcloud app --project progressbarserver deploy
+```
