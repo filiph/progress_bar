@@ -20,3 +20,9 @@ Go to `gae/` and run
 ```sh
 gcloud app --project progressbarserver deploy
 ```
+
+If you change the `gae/cron.yaml` file, you have to specifically deploy that:
+
+```sh
+gcloud app --project progressbarserver deploy cron.yaml
+```
