@@ -4,6 +4,12 @@
 DATABASE_PATH="${DATABASE_PATH:-/app/data/database.db}"
 MASTODON_BASE_URL="${MASTODON_BASE_URL:-https://techhub.social}"
 
+# This avoids posting a duplicate when the container is run the first time.
+# We're assuming the bot has already been running for some time.
+echo "Running the progress tool for the first time to create the database."
+DATABASE_PATH=$DATABASE_PATH MASTODON_ACCESS_TOKEN=$MASTODON_ACCESS_TOKEN MASTODON_BASE_URL=$MASTODON_BASE_URL \
+  /usr/local/bin/toot --no-create-status
+
 echo "Configuring cron job with dynamic environment variables..."
 
 # Write out the cron job to /etc/cron.d/toot-cron.
