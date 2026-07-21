@@ -1,0 +1,9 @@
+.git
+.dart_tool
+.kamal
+.github
+backend/.dart_tool
+backend/build
+local_data
+node_modules
+*.db

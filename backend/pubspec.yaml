@@ -1,0 +1,17 @@
+name: backend
+description: A sample command-line application with basic argument parsing.
+version: 0.0.1
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.12.2
+
+# Add regular dependencies here.
+dependencies:
+  args: ^2.7.0
+  mastodon_client: 1.0.0-beta.1
+  sqlite3: 2.5.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6

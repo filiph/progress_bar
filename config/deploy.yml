@@ -1,0 +1,35 @@
+service: progress-bar
+image: filiph/progress-bar
+
+servers:
+  - 194.182.85.8
+
+proxy:
+  ssl: true
+  hosts:
+    - progress.filiph.net
+  healthcheck:
+    path: /
+
+registry:
+  server: ghcr.io
+  username: filiph
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+ssh:
+  user: deploy
+  port: 47342
+
+builder:
+  arch: amd64
+
+volumes:
+  - "/var/lib/progress-bar:/app/data"
+
+env:
+  secret:
+    - MASTODON_ACCESS_TOKEN
+  clear:
+    DATABASE_PATH: "/app/data/database.db"
+    MASTODON_BASE_URL: "https://techhub.social"

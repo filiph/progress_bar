@@ -1,0 +1,4 @@
+.kamal/secrets
+test_db.db
+backend/test_db.db
+.DS_Store
