@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 import 'package:backend/progress.dart';
 
 void main() {
-  group('Progress calculation tests', () {
+  group('Progress', () {
     late DateTime january1;
     late DateTime january1Dupl;
     late DateTime january2;
@@ -21,7 +21,7 @@ void main() {
       endyear = DateTime.utc(2016, 1, 1);
     });
 
-    test('test_compute_progress', () {
+    test('computeProgress', () {
       expect(
         computeProgress(january1, endyear, january1Dupl),
         closeTo(0.0, 1e-4),
@@ -47,7 +47,7 @@ void main() {
       );
     });
 
-    test('test_compute_current_year_progress', () {
+    test('computeCurrentYearProgress', () {
       expect(computeCurrentYearProgress(january1), closeTo(0.0, 1e-4));
       expect(computeCurrentYearProgress(january10), closeTo(0.0247, 1e-4));
       expect(computeCurrentYearProgress(july4), closeTo(0.5041, 1e-4));
@@ -59,7 +59,7 @@ void main() {
       expect(progressNow, lessThanOrEqualTo(1.0));
     });
 
-    test('test_create_progress_string', () {
+    test('createProgressString', () {
       expect(createProgressString(0.0), "░░░░░░░░░░░░░░░░░░░░");
       expect(createProgressString(0.5), "▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░");
       expect(createProgressString(0.49), "▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░");

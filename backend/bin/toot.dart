@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:args/args.dart';
-import 'package:mastodon_client/mastodon_client.dart';
 import 'package:backend/progress.dart';
 import 'package:backend/state_store.dart';
+import 'package:mastodon_client/mastodon_client.dart';
 
 Future<void> main(List<String> arguments) async {
   final parser = ArgParser()
@@ -33,6 +34,11 @@ Future<void> main(List<String> arguments) async {
       help:
           'Calculate progress, check state, and print what would be posted without posting',
     )
+    ..addFlag(
+      'create-status',
+      defaultsTo: true,
+      help: 'Send the status to Mastodon. Negatable.',
+    )
     ..addFlag('help', abbr: 'h', negatable: false, help: 'Print help message');
 
   ArgResults results;
@@ -53,6 +59,7 @@ Future<void> main(List<String> arguments) async {
   final baseUrl = results['base-url'] as String;
   final accessToken = results['access-token'] as String?;
   final dryRun = results['dry-run'] as bool;
+  final shouldCreateStatus = results['create-status'] as bool;
 
   DateTime now = DateTime.now().toUtc();
   final currentTimeStr = results['current-time'] as String?;
@@ -98,6 +105,14 @@ Future<void> main(List<String> arguments) async {
       return;
     }
 
+    if (!shouldCreateStatus) {
+      print(
+        'Skipping status creation as requested by --no-create-status. '
+        'Would toot: "$statusMessage".',
+      );
+      return;
+    }
+
     if (accessToken == null || accessToken.isEmpty) {
       throw StateError(
         'MASTODON_ACCESS_TOKEN is missing or empty. Cannot post.',
@@ -109,10 +124,11 @@ Future<void> main(List<String> arguments) async {
     try {
       final request = MastodonStatusCreateRequest(status: statusMessage);
       final result = await client.statuses.create(request);
-      if (result is MastodonStatusCreated) {
-        print('Successfully tooted! ID: ${result.status.id}');
-      } else if (result is MastodonStatusScheduled) {
-        print('Toot scheduled for: ${result.scheduledStatus.scheduledAt}');
+      switch (result) {
+        case MastodonStatusCreated(:final status):
+          print('Successfully tooted! ID: ${status.id}');
+        case MastodonStatusScheduled(:final scheduledStatus):
+          print('Toot scheduled for: ${scheduledStatus.scheduledAt}');
       }
     } catch (e) {
       stderr.writeln('Failed to post to Mastodon: $e');
